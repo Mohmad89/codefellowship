@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link th:href="@{/style.css}" rel="stylesheet">
+</head>
+
+<body class="signup-body">
+<div class="signup-box boxes" >
+    <h1>Signup</h1>
+    <form action="/signup" method="POST">
+        <label>First Name </label><br>
+        <input type="text" name="firstName" placeholder="" required><br>
+
+        <label>Last Name</label><br>
+        <input type="text" name="lastName" placeholder="" required><br>
+
+
+        <label>Birth Day</label><br>
+        <input type="date" name="dataOfBirth" placeholder="" required><br>
+
+        <label>Username</label><br>
+        <input type="text" name="username" placeholder="enter your username " required><br>
+
+        <label>Password</label><br>
+        <input type="password" name="password" placeholder="*********" required><br>
+
+        <label>Talk About Your Experience </label><br>
+        <textarea class="text-area" placeholder="enter your bio here ...." name="bio" rows = "6" cols = "30"></textarea><br>
+
+        <button class="btn" type="submit">Signup</button>
+        <a th:href="@{'/login'}">Login Page !</a>
+    </form>
+</div>
+</body>
+</html>
