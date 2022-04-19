@@ -1,7 +1,7 @@
 package com.example.app.web;
 
-import com.example.app.domain.CodeFellowship;
-import com.example.app.infrastructure.CodeFellowshipRepository;
+import com.example.app.domain.ApplicationUser;
+import com.example.app.infrastructure.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.sql.Date;
+import java.security.Principal;
 
 
 @Controller
@@ -22,10 +20,10 @@ public class AppController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    final CodeFellowshipRepository codeFellowshipRepository;
+    final ApplicationUserRepository applicationUserRepository;
 
-    public AppController(CodeFellowshipRepository codeFellowshipRepository) {
-        this.codeFellowshipRepository = codeFellowshipRepository;
+    public AppController(ApplicationUserRepository codeFellowshipRepository) {
+        this.applicationUserRepository = codeFellowshipRepository;
     }
 
 
@@ -48,18 +46,15 @@ public class AppController {
     @PostMapping ("/signup")
     public RedirectView signupPost (@RequestParam String firstName, @RequestParam String lastName, @RequestParam String dataOfBirth, @RequestParam String username, @RequestParam String password , @RequestParam String bio) {
         String passwordEncoded = passwordEncoder.encode(password);
-        CodeFellowship codeFellowship = new CodeFellowship(firstName, lastName, dataOfBirth, username, passwordEncoded, bio);
-        codeFellowshipRepository.save(codeFellowship);
+        ApplicationUser codeFellowship = new ApplicationUser(firstName, lastName, dataOfBirth, username, passwordEncoded, bio);
+        applicationUserRepository.save(codeFellowship);
         return new RedirectView("/login");
     }
+    
 
-//    @GetMapping ("/main")
-//    public String loginAuth (HttpServletRequest request, Model model) {
-//
-//    }
-
-    @GetMapping ("/main")
-    public String logAuth (){
+    @GetMapping ("/dashboard")
+    public String logAuth (Principal p, Model model){
+        model.addAttribute("username", p.getName());
         return "homeauth";
     }
 }
