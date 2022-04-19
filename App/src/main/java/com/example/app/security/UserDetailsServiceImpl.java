@@ -1,6 +1,6 @@
 package com.example.app.security;
 
-import com.example.app.infrastructure.CodeFellowshipRepository;
+import com.example.app.infrastructure.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    CodeFellowshipRepository codeFellowshipRepository;
+    ApplicationUserRepository codeFellowshipRepository;
 
 
     @Override

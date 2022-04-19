@@ -10,7 +10,7 @@ import java.util.Collection;
 
 
 @Entity
-public class CodeFellowship implements UserDetails {
+public class ApplicationUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -34,11 +34,11 @@ public class CodeFellowship implements UserDetails {
     @Column(columnDefinition = "TEXT")
     private String bio;
 
-    public CodeFellowship() {
+    public ApplicationUser() {
 
     }
 
-    public CodeFellowship(@NonNull String firstName, @NonNull String lastName, @NonNull String dataOfBirth, @NonNull String username, @NonNull String password, String bio) {
+    public ApplicationUser(@NonNull String firstName, @NonNull String lastName, @NonNull String dataOfBirth, @NonNull String username, @NonNull String password, String bio) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dataOfBirth = dataOfBirth;
