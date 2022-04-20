@@ -5,13 +5,11 @@ import com.example.app.domain.Post;
 import com.example.app.infrastructure.ApplicationUserRepository;
 import com.example.app.infrastructure.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
@@ -20,7 +18,7 @@ import java.util.List;
 
 
 @Controller
-public class AppController {
+public class AppController implements ErrorController {
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -33,6 +31,11 @@ public class AppController {
         this.postRepository = postRepository;
     }
 
+
+    @RequestMapping("/error")
+    public String errorPage (){
+        return "error";
+    }
 
     @GetMapping ("/")
     public String homePage () {
