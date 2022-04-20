@@ -6,20 +6,9 @@
   <link th:href="@{/style.css}" rel="stylesheet">
 </head>
 <body>
-<header>
 
-  <div class="content">
-    <span>Code Fellowship</span>
-  </div>
-  <div class="userInfo">
-    <form
-            action="/perform_logout"
-            method="post">
-      <input type="submit" value="logout">
-    </form>
-    <p th:text="${username}"></p>
-  </div>
-</header>
+  <div th:insert="~{/header :: my-fragment2}"></div>
+
 
 <section>
 

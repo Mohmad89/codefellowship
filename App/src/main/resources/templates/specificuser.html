@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/profile.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+<div th:insert="~{/header :: my-fragment2}"></div>
+
+<div class="container d-flex justify-content-center">
+    <div class="card p-3 py-4">
+        <div class="text-center" >
+            <img th:src="@{/user.png}" width="100" class="rounded-circle">
+            <h3 class="mt-2"></h3> <span class="mt-1 clearfix" th:text="${user.getFirstName()} + ' ' + ${user.getLastName()}"></span>
+            <div class="row mt-3 mb-3">
+                <div class="col-md-4">
+                    <h5>Address</h5> <span class="num" th:text="${user.getAddress()}"></span>
+                </div>
+                <div class="col-md-4">
+                    <h5>Born</h5> <span class="num" th:text="${user.getDataOfBirth()}"></span>
+                </div>
+                <div class="col-md-4">
+                    <h5>Username</h5> <span class="num" th:text="${user.getUsername()}"></span>
+                </div>
+            </div>
+            <hr class="line"> <small class="mt-4" th:text="${user.getEmail()}"></small>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
