@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    background: white;
+}
+
+.card {
+    color: #fff;
+    width: 350px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #9a40a9, #b74cc9);
+    box-shadow: 0 5px 25px rgba(1 1 1 / 20%);
+    border: none
+}
+
+.neo-button {
+    width: 40px;
+    height: 40px;
+    outline: 0 !important;
+    cursor: pointer;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #9a40a9, #b74cc9);
+    box-shadow: 0 5px 25px rgba(1 1 1 / 20%);
+}
+
+.num {
+    color: #eee !important
+}
+
+.line {
+    color: #fff
+}
+
+.neo-button:active {
+    border-radius: 50%;
+    background: #AB47BC;
+}
+
+.fa-facebook {
+    color: #3b5998
+}
+
+.fa-linkedin {
+    color: #0077b5
+}
+
+.fa-google {
+    color: #dc4e41
+}
+
+.fa-youtube {
+    color: #cd201f
+}
+
+.fa-twitter {
+    color: #55acee
+}
+
+.profile_button {
+    color: #fff;
+    padding: 10px;
+    border: none;
+    outline: 0 !important;
+    border-radius: 50px;
+    background: #AB47BC;
+}
+
+/*Header Style*/
+header {
+    background-color: cornflowerblue;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 200px;
+}
+
+header .content span{
+    font-size: 24px;
+    font-weight: 700;
+    color: black;
+    margin-right: 10px;
+}
+header .content a {
+    text-decoration: none;
+    color: blue;
+    font-size: 20px;
+}
+header .content a:hover {
+    color: blueviolet;
+}
+header .userInfo {
+    text-align:center;
+    display: flex;
+    justify-content: space-between;
+}
+header .userInfo a {
+    text-decoration: none;
+    color: blue;
+    font-size: 20px;
+    margin-right: 20px;
+}
+header .userInfo a:hover {
+    background-color: white;
+    transform: scale(1.1);
+}
+
+header .userInfo p {
+    color:#363636;
+    font-size: 22px;
+    font-weight: 600;
+    margin-left: 20px;
+    cursor: pointer;
+
+}

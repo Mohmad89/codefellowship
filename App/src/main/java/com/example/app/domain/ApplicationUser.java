@@ -1,14 +1,18 @@
 package com.example.app.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
-
+@JsonIgnoreProperties
 @Entity
 public class ApplicationUser implements UserDetails {
     @Id
@@ -31,20 +35,24 @@ public class ApplicationUser implements UserDetails {
     @NonNull
     private String password;
 
-    @Column(columnDefinition = "TEXT")
-    private String bio;
+    @NonNull
+    private String address;
+
+    @NonNull
+    private String email;
 
     public ApplicationUser() {
 
     }
 
-    public ApplicationUser(@NonNull String firstName, @NonNull String lastName, @NonNull String dataOfBirth, @NonNull String username, @NonNull String password, String bio) {
+    public ApplicationUser(@NonNull String firstName, @NonNull String lastName, @NonNull String dataOfBirth, @NonNull String username, @NonNull String password, @NonNull String address, @NonNull String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dataOfBirth = dataOfBirth;
         this.username = username;
         this.password = password;
-        this.bio = bio;
+        this.address = address;
+        this.email = email;
     }
 
 
@@ -52,9 +60,17 @@ public class ApplicationUser implements UserDetails {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @NonNull
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(@NonNull String firstName) {
+        this.firstName = firstName;
     }
 
     @NonNull
@@ -62,9 +78,43 @@ public class ApplicationUser implements UserDetails {
         return lastName;
     }
 
+    public void setLastName(@NonNull String lastName) {
+        this.lastName = lastName;
+    }
+
     @NonNull
     public String getDataOfBirth() {
         return dataOfBirth;
+    }
+
+    public void setDataOfBirth(@NonNull String dataOfBirth) {
+        this.dataOfBirth = dataOfBirth;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(@NonNull String password) {
+        this.password = password;
+    }
+
+    @NonNull
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(@NonNull String address) {
+        this.address = address;
+    }
+
+    @NonNull
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(@NonNull String email) {
+        this.email = email;
     }
 
     @Override
@@ -76,10 +126,6 @@ public class ApplicationUser implements UserDetails {
     @NonNull
     public String getPassword() {
         return password;
-    }
-
-    public String getBio() {
-        return bio;
     }
 
     @Override
@@ -106,4 +152,7 @@ public class ApplicationUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @OneToMany(mappedBy = "user")
+    List <Post> post;
 }

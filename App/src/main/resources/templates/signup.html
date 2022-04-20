@@ -20,14 +20,18 @@
         <label>Birth Day</label><br>
         <input type="date" name="dataOfBirth" placeholder="" required><br>
 
+        <label>Address</label><br>
+        <input type="text" name="address" placeholder="" required><br>
+
+        <label>Email</label><br>
+        <input type="email" name="email" placeholder="" required><br>
+
         <label>Username</label><br>
         <input type="text" name="username" placeholder="enter your username " required><br>
 
         <label>Password</label><br>
         <input type="password" name="password" placeholder="*********" required><br>
 
-        <label>Talk About Your Experience </label><br>
-        <textarea class="text-area" placeholder="enter your bio here ...." name="bio" rows = "6" cols = "30"></textarea><br>
 
         <button class="btn" type="submit">Signup</button>
         <a th:href="@{'/login'}">Login Page !</a>
