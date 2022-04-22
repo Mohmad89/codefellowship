@@ -155,4 +155,19 @@ public class ApplicationUser implements UserDetails {
 
     @OneToMany(mappedBy = "user")
     List <Post> post;
+
+
+    // SELF JOIN  <-* *->
+    @ManyToMany
+    @JoinTable (
+            name = "wing_wer",
+            joinColumns = {@JoinColumn(name = "follwer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "following_id")}
+    )
+    public List<ApplicationUser> follower;
+
+
+    @ManyToMany (mappedBy = "follower", fetch = FetchType.EAGER)
+    public List<ApplicationUser> following;
+
 }

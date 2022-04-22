@@ -14,15 +14,14 @@
 <div th:insert="~{/header :: my-fragment2}"></div>
 <div class="list-group" style=" padding: 0px 50px;">
     <div th:each="post:${posts}" >
-        <a  class="list-group-item list-group-item-action flex-column align-items-start ">
+        <a th:href="${'user/'+post.user.getId()}" class="list-group-item list-group-item-action flex-column align-items-start ">
         <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1" th:text="${post.user.getUsername()}"></h5>
                 <small th:text="${post.getCreatedAt()}" ></small>
             </div>
-            <p class="mb-1" th:text="${post.getBody()}"></p>
+            <p class="mb-1" th:Utext="${post.getBody()}"></p>
         </a>
     </div>
-
 </div>
 <form action="/addpost" method="get" style="margin-right:100px;">
     <button type="submit" class="bt btn-outline-info btn-sm"  style="background-color: black; position: fixed;bottom: 10vh;right: 0%;padding: 7px;font-size: xx-large; margin-right:80px; border-radius:50px;">
