@@ -73,6 +73,7 @@ public class AppController implements ErrorController {
         ApplicationUser users = applicationUserRepository.findByUsername(principal.getName());
         System.out.println(principal.getName());
         model.addAttribute("user", users);
+        model.addAttribute("current", principal.getName());
         return "profile";
     }
 
@@ -98,9 +99,33 @@ public class AppController implements ErrorController {
     }
 
     @GetMapping("/user/{id}")
-    public String getSpecificUser(@PathVariable long id, Model model) {
+    public String getSpecificUser(@PathVariable long id, Model model, Principal p) {
         ApplicationUser user = applicationUserRepository.getById(id);
         model.addAttribute("user",user);
-        return "specificuser";
+        model.addAttribute("current", p.getName());
+        model.addAttribute("id", id);
+        return "profile";
     }
+
+
+    @PostMapping ("/user/follow/{id}")
+    public String followUser (@PathVariable Long id, Model model, Principal principal) {
+        ApplicationUser currentUser = applicationUserRepository.findByUsername(principal.getName());
+        ApplicationUser followUser  = applicationUserRepository.findById(id).orElseThrow();
+
+        currentUser.follower.add(followUser);
+        currentUser.following.add(currentUser);
+
+        applicationUserRepository.save(currentUser);
+        applicationUserRepository.save(followUser);
+        return "following";
+    }
+
+//    @GetMapping ("/feed")
+//    public String followingPage (Principal principal, Model model) {
+//        ApplicationUser currentUser = applicationUserRepository.findByUsername(principal.getName());
+//
+//        System.out.println("--------------" + followPost.size());
+//        return "following";
+//    }
 }

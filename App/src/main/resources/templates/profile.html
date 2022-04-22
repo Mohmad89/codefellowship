@@ -23,10 +23,17 @@
                     <h5>Born</h5> <span class="num" th:text="${user.getDataOfBirth()}"></span>
                 </div>
                 <div class="col-md-4">
-                    <h5>Username</h5> <span class="num" th:text="${user.getUsername()}"></span>
+                    <h5>Usernam</h5> <span class="num" th:text="${user.getUsername()}"></span>
                 </div>
             </div>
             <hr class="line"> <small class="mt-4" th:text="${user.getEmail()}"></small>
+            <div th:if="${current != user.username}">
+                <div class="profile mt-5">
+                    <form th:action="${'follow'+'/'+user.getId()}" th:method="post">
+                        <button class="profile_button px-5">Follow</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -35,10 +42,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+<div th:if="${current== user.getUsername()}">
 <script th:inline="javascript">
     var username = /*[[${user.getUsername()}]]*/ 'Sebastian';
     localStorage.setItem("username",username);
 
 </script>
+</div>
 </body>
 </html>
